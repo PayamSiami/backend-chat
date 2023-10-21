@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import fileupload from 'express-fileupload';
 import cors from 'cors';
+import routes from './routes';
 
 //create express app
 const app: Express = express();
@@ -47,4 +48,36 @@ app.use(
 //file upload
 app.use(cors({ origin: 'http://localhost:3000' }));
 
+//routes
+app.use('/api/v1', routes);
+
+//trim
+app.use(
+  express.json({
+    reviver: (key, value) => {
+      if (typeof value === 'string') {
+        return value.trim();
+      }
+      return value;
+    }
+  })
+);
+
+//error handling
+app.use(
+  async (
+    err: { status: unknown; message: any },
+    req: any,
+    res: { status: (arg0: any) => void; send: (arg0: { error: { status: any; message: any } }) => void },
+    next: any
+  ) => {
+    res.status(err.status || 500);
+    res.send({
+      error: {
+        status: err.status || 500,
+        message: err.message
+      }
+    });
+  }
+);
 export default app;
