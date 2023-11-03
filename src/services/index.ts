@@ -1,6 +1,6 @@
 import { createUser, signUser } from './auth.service';
 import { generateToken, verifyToken } from './token.service';
-import { findUser } from './user.service';
+import { findUser, searchUsers } from './user.service';
 import {
   doesConversationExist,
   getUserConversations,
@@ -24,5 +24,6 @@ export {
   createMessage,
   populateMessage,
   updateLatestMessage,
-  getConMessages
+  getConMessages,
+  searchUsers
 };

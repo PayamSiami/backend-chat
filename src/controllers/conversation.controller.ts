@@ -28,6 +28,7 @@ export const createOpenConversation = async (req: Request | any, res: Response, 
       const receiver_user = await findUser(receiver_id);
       const convData = {
         name: receiver_user.name,
+        picture: receiver_user.picture,
         is_group: false,
         users: [sender_id, receiver_id]
       };

@@ -5,6 +5,7 @@ const { ObjectId } = mongoose.Schema.Types;
 export interface IConversation {
   name: string;
   isGroup: boolean;
+  picture: string;
   users: typeof ObjectId;
   latestMessage: typeof ObjectId;
   admin: typeof ObjectId;
@@ -16,6 +17,10 @@ const conversationSchema = new Schema<IConversation>(
       type: String,
       require: [true, 'please enter conversation name'],
       trim: true
+    },
+    picture: {
+      type: String,
+      required: true
     },
     isGroup: {
       type: Boolean,

@@ -29,7 +29,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         email: newUser.email,
         picture: newUser.picture,
         status: newUser.status,
-        access_token
+        token: access_token
       }
     });
   } catch (error) {
@@ -59,7 +59,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         email: user.email,
         picture: user.picture,
         status: user.status,
-        access_token
+        token: access_token
       }
     });
   } catch (error) {
@@ -97,7 +97,7 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
         email: user.email,
         picture: user.picture,
         status: user.status,
-        access_token
+        token: access_token
       }
     });
   } catch (error) {
