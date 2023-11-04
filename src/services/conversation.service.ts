@@ -57,8 +57,8 @@ export const getUserConversations = async (user_id: string) => {
   return conversation;
 };
 
-export const updateLatestMessage = async (conversation_id: string, msg: string) => {
-  const updatedConversation = await ConversationModel.findByIdAndUpdate(conversation_id, {
+export const updateLatestMessage = async (con_id: string, msg: string) => {
+  const updatedConversation = await ConversationModel.findByIdAndUpdate(con_id, {
     latestMessage: msg
   });
   if (!updatedConversation) throw createHttpError.BadRequest('smt went wrong');
