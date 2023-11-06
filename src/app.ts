@@ -78,6 +78,7 @@ app.use(
         message: err.message
       }
     });
+    return;
   }
 );
 export default app;

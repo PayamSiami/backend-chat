@@ -25,16 +25,16 @@ export const createOpenConversation = async (req: Request | any, res: Response, 
     if (existed_conversation) {
       res.json(existed_conversation);
     } else {
-      const receiver_user = await findUser(receiver_id);
-      const convData = {
-        name: receiver_user.name,
-        picture: receiver_user.picture,
+      // const receiver_user = await findUser(receiver_id);
+      const conData = {
+        name: 'conversation name',
+        picture: 'conversation picture',
         is_group: false,
         users: [sender_id, receiver_id]
       };
-      const newConv = await createConversation(convData);
-      const populatedConv = await populatedConversation(newConv._id, 'users', '-password');
-      res.status(200).json(populatedConv);
+      const newCon = await createConversation(conData);
+      const populatedCon = await populatedConversation(newCon._id, 'users', '-password');
+      res.status(200).json(populatedCon);
     }
   } catch (error) {
     next(error);

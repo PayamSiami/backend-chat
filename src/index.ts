@@ -2,7 +2,7 @@ import logger from './config/logger.config';
 import app from './app';
 import mongoose from 'mongoose';
 import { Server } from 'socket.io';
-import socketServer from './socketServer';
+import socketServer from './socket-server';
 
 // env variables
 const PORT = process.env.PORT || 8000;
