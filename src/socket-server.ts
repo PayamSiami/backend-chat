@@ -2,7 +2,6 @@ let onlineUsers: object[] = [];
 export default function (socket: any, io: { emit: (arg0: string, arg1: object[]) => void }) {
   // user join to socket
   socket.on('join', (user: any) => {
-    console.log('user joined', user);
     socket.join(user);
     // add joined user to online users
     if (!onlineUsers.some((u: any) => u.userId === user)) {
@@ -14,7 +13,6 @@ export default function (socket: any, io: { emit: (arg0: string, arg1: object[])
   // socket disconnect
   socket.on('disconnect', () => {
     onlineUsers = onlineUsers.filter((user: any) => user.socketId !== socket.id);
-    
     io.emit('get_online_users', onlineUsers);
   });
   // join conversation

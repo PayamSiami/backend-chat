@@ -41,7 +41,7 @@ export const createOpenConversation = async (req: Request | any, res: Response, 
   }
 };
 
-export const getConversations = async (req: Request | any, res: Response, next: NextFunction) => {
+export const getConversations = async (req: Request | any, res: Response) => {
   try {
     const user_id = req?.user?.userId;
     const get_conversations = await getUserConversations(user_id);
